@@ -84,7 +84,7 @@ DATABASES = {
     }
 }
 
-
+DATABASE['defualt'] = dj_database_url.parse("postgresql://postgresql:fu3bmDTH4NRvZHA6cWgSmsNZbFG6h0o5@dpg-da50tcf40ujc73ab95i0-a.oregon-postgres.render.com/multimedia_assessment")
 # Password validation
 # https://docs.djangoproject.com/en/6.1/ref/settings/#auth-password-validators
 
