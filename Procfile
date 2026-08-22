@@ -1,1 +1,1 @@
-web: guncorn multimedia_assessment.wsgi
+gunicorn multimedia_assessment.wsgi:application
