@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <main class="container">
+            <div class="nav">
+                <ul>
+                    <li> <h4>My App Videos</h4></li>
+                    <li><h4>My App Pictures</h4></li>
+                </ul>                
+            </div>
+            
+            <div class="section">
+                <form action="{% url 'upload_video' %}" method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+            <div class="file_upload">
+                <div>
+                    <label for="file-input">Choose Video File</label>
+                    <input type="file"  id="file-input" name="video" required>
+                </div>
+                 <div>
+                    <label for="title">Enter Title</label>
+                    <input type="text" id="title" name="title" required>
+                 </div> 
+                 <div class="submit">
+                    <input type="submit"id value="Submit">
+                 </div>
+            </div>
+            </form>
+
+            <div class="medias">
+
+                
+               {% for video in videos_data %}
+                <section class="data_section">
+                    <div class="img"> 
+                        {% if ".pdf" in video.video %}
+                            <iframe src="{{video.video}}" frameborder="0" style="border: none;"></iframe>
+                        {% else %}
+                        <video  controls preload="none"><source src="{{video.video.url}}" type="video/mp4"></video>
+                        {% endif %}
+                     </div>
+
+                    <div class="discription">
+                        <div class="title">{{video.title}}</div>
+                </section>
+                {% empty%}
+                <p>No upload yet!</p>
+               {% endfor %}
+                 
+                 
+            </div>
+        </div>
+    </main>
+</body>
+</html>
