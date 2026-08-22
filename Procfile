@@ -1,0 +1,1 @@
+web: guncorn multimedia_assessment.wsgi
